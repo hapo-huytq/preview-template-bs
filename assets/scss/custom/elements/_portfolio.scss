@@ -1,0 +1,68 @@
+/* Portolio */
+.portfolio-wrapper {
+    background: $color-sixth;
+    padding: 45px 0;
+
+}
+
+.portfolio-wrapper,
+.references-wrapper {
+    .title-top-line::before,
+    .title-top-line::before {
+        width: 41px;
+    }
+    .title-under-line::after,
+    .title-under-line::after {
+        width: 72px;
+    }
+}
+
+.portfolio-tags-list {
+    padding: 0 35px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    li {
+        padding: 0 14px;
+        a {
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &.active {
+            a {
+                text-decoration: underline;
+            }
+        }
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+}
+
+.portfolio-projects {
+    .col-first,
+    .col-second,
+    .col-third,
+    .col-fourth {
+        width: 25%;
+    }
+}
+
+.portfolio-projects-button-add {
+    min-height: 200px;
+}
+
+.portfolio-projects-mb {
+    display: none !important;
+}
+/* ------ */

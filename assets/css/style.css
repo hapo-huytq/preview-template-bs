@@ -94,6 +94,7 @@ a {
   a:hover {
     color: #fff; }
 
+/* ------ */
 /* Sumary Profile */
 .summary-info {
   position: absolute;
@@ -137,6 +138,7 @@ a {
     position: absolute;
     left: 30px; }
 
+/* ------ */
 /* Info Profile */
 .info-profile {
   background: #242581; }
@@ -214,7 +216,7 @@ a {
     margin-top: 13px; }
 
 /* ------ */
-/* Skill */
+/* Skills */
 .skill-wrapper {
   background: #4A0F73;
   padding: 45px 0 17px; }

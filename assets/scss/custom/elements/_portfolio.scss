@@ -2,16 +2,14 @@
 .portfolio-wrapper {
     background: $color-sixth;
     padding: 45px 0;
-
 }
 
 .portfolio-wrapper,
 .references-wrapper {
-    .title-top-line::before,
     .title-top-line::before {
         width: 41px;
     }
-    .title-under-line::after,
+
     .title-under-line::after {
         width: 72px;
     }
@@ -32,17 +30,14 @@
                 text-decoration: underline;
             }
         }
-
         &.active {
             a {
                 text-decoration: underline;
             }
         }
-
         &:first-child {
             padding-left: 0;
         }
-
         &:last-child {
             padding-right: 0;
         }

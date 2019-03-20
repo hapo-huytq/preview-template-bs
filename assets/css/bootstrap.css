@@ -2045,7 +2045,7 @@ textarea.form-control {
   max-height: 36px;
   padding: 0 17px;
   font-size: 0.875rem;
-  line-height: 36px;
+  line-height: 34px;
   border-radius: 0;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;

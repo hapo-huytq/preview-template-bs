@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/css/progress-bar.css">
     <link rel="stylesheet" href="assets/css/owl.theme.default.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.css" />
     <link rel="stylesheet" href="assets/css/style.css">
@@ -28,10 +29,10 @@
                         <img src="assets/images/avatar.png" alt="Info Avatar">
                         <div class="summary-info">
                             <div class="box">
-                                <h2 class="title-under-line">
+                                <h2 class="title-under-line" contenteditable="true">
                                     Bumblebee Walker
                                 </h2>
-                                <div class="summary-position">
+                                <div class="summary-position" contenteditable="true">
                                     Ruby on Rail Developer
                                 </div>
                             </div>
@@ -61,37 +62,37 @@
                         </div>
                         <div class="personal-info">
                             <div class="head">
-                                <h4>
+                                <h4 contenteditable="true">
                                     BUMBLEHEE WALKER
                                 </h4>
                                 <div class="birthday">
-                                    25/12/1992
+                                    <input type="text" id="datepicker" value="03/01/1993" class="birdthday-picker">
                                 </div>
                             </div>
                             <div class="detail">
                                 <div class="detail-row d-flex">
                                     <h4 class="label">Phone:</h4>
-                                    <span class="text">0123456789</span>
+                                    <span class="text" contenteditable="true">0123456789</span>
                                 </div>
                                 <div class="detail-row d-flex">
                                     <h4 class="label">Email:</h4>
-                                    <span class="text">bumblebee@gmail.com</span>
+                                    <span class="text" contenteditable="true">bumblebee@gmail.com</span>
                                 </div>
                                 <div class="detail-row d-flex">
                                     <h4 class="label">Facebook:</h4>
-                                    <span class="text">bumblebee</span>
+                                    <span class="text" contenteditable="true">bumblebee</span>
                                 </div>
                                 <div class="detail-row d-flex">
                                     <h4 class="label">Skype:</h4>
-                                    <span class="text">bumblebee</span>
+                                    <span class="text" contenteditable="true">bumblebee</span>
                                 </div>
                                 <div class="detail-row d-flex">
                                     <h4 class="label">Chatwork:</h4>
-                                    <span class="text">bumblebee</span>
+                                    <span class="text" contenteditable="true">bumblebee</span>
                                 </div>
                                 <div class="detail-row d-flex">
                                     <h4 class="label">Address:</h4>
-                                    <span class="text">58 Tran Binh - Mai Dich
+                                    <span class="text" contenteditable="true">58 Tran Binh - Mai Dich
                                         -
                                         Cau Giay - Ha Noi</span>
                                 </div>
@@ -116,7 +117,7 @@
                                 Professional Summary
                             </h3>
                         </div>
-                        <div class="text text-justify">
+                        <div class="text text-justify" contenteditable="true">
                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                             sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
                             Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
@@ -161,28 +162,35 @@
                         </div>
                         <div class="skill-progress-circle d-flex flex-wrap">
                             <div class="progress-circle-wrapper">
-                                <div class="progress-circle progress-75"><span>75</span></div>
-                                <div class="progress-circle-name">HTML/CSS</div>
+                                <div class="progress-circle progress-75">
+                                    <span contenteditable="true">75</span>
+                                </div>
+                                <div class="progress-circle-name" contenteditable="true">HTML/CSS</div>
+                                <a href="#" class="progress-circle-del"><i class="far fa-trash-alt"></i></a>
                             </div>
                             <div class="progress-circle-wrapper">
-                                <div class="progress-circle progress-65"><span>65</span></div>
-                                <div class="progress-circle-name">C# .NET</div>
+                                <div class="progress-circle progress-65"><span contenteditable="true">65</span></div>
+                                <div class="progress-circle-name" contenteditable="true">C# .NET</div>
+                                <a href="#" class="progress-circle-del"><i class="far fa-trash-alt"></i></a>
                             </div>
                             <div class="progress-circle-wrapper">
-                                <div class="progress-circle progress-50"><span>50</span></div>
-                                <div class="progress-circle-name">MY SQL</div>
+                                <div class="progress-circle progress-50"><span contenteditable="true">50</span></div>
+                                <div class="progress-circle-name" contenteditable="true">MY SQL</div>
+                                <a href="#" class="progress-circle-del"><i class="far fa-trash-alt"></i></a>
                             </div>
                             <div class="progress-circle-wrapper">
-                                <div class="progress-circle progress-75"><span>75</span></div>
-                                <div class="progress-circle-name">PHP</div>
+                                <div class="progress-circle progress-75"><span contenteditable="true">75</span></div>
+                                <div class="progress-circle-name" contenteditable="true">PHP</div>
+                                <a href="#" class="progress-circle-del"><i class="far fa-trash-alt"></i></a>
                             </div>
                             <div class="progress-circle-wrapper">
-                                <div class="progress-circle progress-65"><span>65</span></div>
-                                <div class="progress-circle-name">REACT NATIVE</div>
+                                <div class="progress-circle progress-65"><span contenteditable="true">65</span></div>
+                                <div class="progress-circle-name" contenteditable="true">REACT NATIVE</div>
+                                <a href="#" class="progress-circle-del"><i class="far fa-trash-alt"></i></a>
                             </div>
                             <div
-                                class="progress-circle-wrapper skill-button-add d-flex d-flex justify-content-center align-items-center">
-                                <a href="#" class="btn btn-active">
+                                class="skill-button-add d-flex d-flex justify-content-center align-items-center">
+                                <a href="#" class="btn btn-active" id="proAdd">
                                     Add skill
                                     <i class="fas fa-plus"></i>
                                 </a>
@@ -203,19 +211,22 @@
                             </div>
                             <div class="skill-progress-bar">
                                 <div class="progress-bar-wrapper">
-                                    <div class="progress-bar-name">Team work</div>
-                                    <div class="progress-bar progress-65"><span>65</span></div>
+                                    <div class="progress-bar-name" contenteditable="true">Team work</div>
+                                    <div class="progress-bar progress-65"><span contenteditable="true">65</span></div>
+                                    <a href="#" class="progress-bar-del"><i class="far fa-trash-alt"></i></a>
                                 </div>
                                 <div class="progress-bar-wrapper">
-                                    <div class="progress-bar-name">English</div>
-                                    <div class="progress-bar progress-75"><span>75</span></div>
+                                    <div class="progress-bar-name" contenteditable="true">English</div>
+                                    <div class="progress-bar progress-75"><span contenteditable="true">75</span></div>
+                                    <a href="#" class="progress-bar-del"><i class="far fa-trash-alt"></i></a>
                                 </div>
                                 <div class="progress-bar-wrapper">
-                                    <div class="progress-bar-name">Japanese</div>
-                                    <div class="progress-bar progress-50"><span>50</span></div>
+                                    <div class="progress-bar-name" contenteditable="true">Japanese</div>
+                                    <div class="progress-bar progress-50"><span contenteditable="true">50</span></div>
+                                    <a href="#" class="progress-bar-del"><i class="far fa-trash-alt"></i></a>
                                 </div>
                                 <div class="skill-button-add">
-                                    <a href="#" class="btn btn-active">
+                                    <a href="#" class="btn btn-active" id="perAdd">
                                         Add skill
                                         <i class="fas fa-plus"></i>
                                     </a>
@@ -562,7 +573,8 @@
                                         <img src="assets/images/portfolio-1.png" alt="Portfolio Image" width="88">
                                     </div>
                                 </div>
-                                <div class="item portfolio-projects-button-add d-flex justify-content-center align-items-center">
+                                <div
+                                    class="item portfolio-projects-button-add d-flex justify-content-center align-items-center">
                                     <a href="#" class="btn btn-active">
                                         Add project
                                         <i class="fas fa-plus"></i>
@@ -663,6 +675,7 @@
     <script src="assets/js/jquery-3.3.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery-ui.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 

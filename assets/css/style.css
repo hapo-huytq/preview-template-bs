@@ -35,6 +35,10 @@ h4 {
 .btn i {
   margin-left: 5px; }
 
+.btn:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
 .btn-active {
   border: 1px solid #f64d70; }
   .btn-active:hover {
@@ -186,6 +190,14 @@ a {
       .info-profile .personal-info .head h4 {
         margin: 0;
         padding-bottom: 0; }
+    .info-profile .personal-info .birdthday-picker {
+      height: 21px;
+      line-height: 21px;
+      width: 100px;
+      background: transparent;
+      border: none;
+      color: #fff;
+      text-align: center; }
     .info-profile .personal-info .detail-row {
       padding: 5px 0;
       margin-bottom: 9px; }
@@ -234,6 +246,19 @@ a {
 .progress-circle-wrapper {
   width: 33.33%;
   text-align: center;
+  margin-bottom: 25px;
+  position: relative; }
+  .progress-circle-wrapper .progress-circle-del {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    visibility: hidden; }
+  .progress-circle-wrapper:hover .progress-circle-del {
+    visibility: visible; }
+
+.skill-progress-circle .skill-button-add {
+  width: 33.33%;
   margin-bottom: 25px; }
 
 .skill-button-add {
@@ -254,7 +279,15 @@ a {
   margin-bottom: 11px; }
 
 .progress-bar-wrapper {
-  margin-bottom: 25px; }
+  margin-bottom: 25px;
+  position: relative; }
+  .progress-bar-wrapper .progress-bar-del {
+    position: absolute;
+    top: 0;
+    right: 0;
+    visibility: hidden; }
+  .progress-bar-wrapper:hover .progress-bar-del {
+    visibility: visible; }
   .progress-bar-wrapper:last-child {
     margin-bottom: 0; }
 
@@ -609,6 +642,9 @@ a {
   .progress-circle-wrapper {
     width: 50%;
     margin-bottom: 20px; }
+  .skill-progress-circle .skill-button-add {
+    width: 100%;
+    margin-bottom: 0; }
   .skill-button-add {
     width: 100%;
     margin-bottom: 0;

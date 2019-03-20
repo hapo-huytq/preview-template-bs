@@ -44,6 +44,9 @@ h4 {
     i {
         margin-left: 5px;
     }
+    &:focus {
+        box-shadow: none;
+    }
 }
 
 .btn-active {
@@ -234,6 +237,15 @@ a {
                 padding-bottom: 0;
             }
         }
+        .birdthday-picker {
+            height: 21px;
+            line-height: 21px;
+            width: 100px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            text-align: center;
+        }
         .detail-row {
             padding: 5px 0;
             margin-bottom: 9px;
@@ -305,6 +317,26 @@ a {
     width: 33.33%;
     text-align: center;
     margin-bottom: 25px;
+    position: relative;
+    .progress-circle-del {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        right: 15px;
+        visibility: hidden;
+    }
+    &:hover {
+        .progress-circle-del {
+            visibility:visible;
+        }
+    }
+}
+
+.skill-progress-circle {
+    .skill-button-add {
+        width: 33.33%;
+        margin-bottom: 25px;
+    }
 }
 
 .skill-button-add {
@@ -331,6 +363,18 @@ a {
 
 .progress-bar-wrapper {
     margin-bottom: 25px;
+    position: relative;
+    .progress-bar-del {
+        position: absolute;
+        top: 0;
+        right: 0;
+        visibility: hidden;
+    }
+    &:hover {
+        .progress-bar-del {
+            visibility: visible;
+        }
+    }
     &:last-child {
         margin-bottom: 0;
     }

@@ -159,6 +159,8 @@ a {
     display: block;
     background: rgba(58,57,57, 0.8);
     position: absolute;
+    margin: 0;
+    cursor: pointer;
 }
     
 .info-avatar {
@@ -473,6 +475,11 @@ a {
                 letter-spacing: 0.05em;
             }
         }
+        .case-item-del {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+        }
     }
     .work-education-button-add {
         text-align: right;
@@ -528,16 +535,54 @@ a {
 }
 
 .portfolio-projects {
-    .col-first,
-    .col-second,
-    .col-third,
-    .col-fourth {
+    overflow: hidden;
+    .item {
         width: 25%;
+        height: 200px;
+        &.item-style-0,
+        &.item-style-9 {
+            background:#FD7038;
+        }
+        &.item-style-1 {
+            background:#EECD10;
+            height: 400px;
+        }
+        &.item-style-2 {
+            background:#2F2FA1;
+        }
+        &.item-style-3, 
+        &.item-style-7 {
+            background:#F64C71;
+        }
+        &.item-style-4,
+        &.item-style-8 {
+            background:#333333;
+        }
+        &.item-style-5 {
+            height: 400px;
+            background:#EF5B5B;
+        }
+        &.item-style-6 {
+            background:#F9BC2D;
+        }
+        .del-project {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            visibility: hidden;
+        }
+        &:hover {
+            .del-project {
+                visibility: visible;
+            }
+        }
     }
 }
 
 .portfolio-projects-button-add {
-    min-height: 200px;
+    height: 200px;
+    background: none !important;
 }
 
 .portfolio-projects-mb {
@@ -553,16 +598,31 @@ a {
 
 .references-list { 
     .item {
+        position: relative;
+        .del-reference {
+            position: absolute;
+            top: 0;
+            right: 5px;
+            color: #fff;
+            visibility: hidden;
+        }
+        &:hover {
+            .del-reference {
+                visibility: visible;
+            }
+        }
         .people-avatar {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             overflow: hidden;
             border:4px solid #fff;
+            cursor: pointer;
+            margin: 0;
         }
         .text {
             width: calc(100% - 150px);
-            span {
+            > span {
                 display: block;
                 padding-left: 75px;
                 position: relative;

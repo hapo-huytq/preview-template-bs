@@ -1,10 +1,11 @@
 (function ($) {
     $(document).ready(function () {
-        let owl = $('.references-list');
-        owl.owlCarousel({
+        let $owl = $('.references-list');
+        $owl.owlCarousel({
             margin: 10,
             nav: true,
             loop: false,
+            smartSpeed: 1500,
             responsive: {
                 0: {
                     items: 1
@@ -27,7 +28,6 @@
         });
         /* Inline Edit input */
         $(".detail-row > .text").blur(function () {
-
         });
         // get date picker
         $("#datepicker").datepicker({
@@ -39,8 +39,7 @@
         });
         /* Skills event */
         // Disable Enter key in contenteditable
-        $("[contenteditable]").keypress(function (e) { return e.which != 13; });
-
+        $(".progress-circle [contenteditable]").keypress(function (e) { return e.which != 13; });
         // contenteditable Allow only number
         $(".progress-circle > span").on("keypress", function () {
             if (event.keyCode < 48 || event.keyCode > 57) {
@@ -84,10 +83,6 @@
                 let textOld = $(this).text().trim();
                 changeCircleProgress($(this), textOld);
             });
-            $(".progress-circle-del").on('click', function (e) {
-                e.preventDefault();
-                $(this).closest(".progress-circle-wrapper").remove();
-            });
         });
         // Add per skill
         $("#perAdd").on('click', function (e) {
@@ -110,42 +105,32 @@
                 let textOld = $(this).text().trim();
                 changeProgressBar($(this), textOld);
             });
-            $(".progress-bar-del").on('click', function (e) {
-                e.preventDefault();
-                $(this).closest(".progress-bar-wrapper").remove();
-            });
         });
         // Dell pro skill
-        $(".progress-circle-del").on('click', function (e) {
-            e.preventDefault();
+        $(document).on('click', '.progress-circle-del', function () {
             $(this).closest(".progress-circle-wrapper").remove();
         });
         // Del per Skill
-        $(".progress-bar-del").on('click', function (e) {
-            e.preventDefault();
+        $(document).on('click', '.progress-bar-del', function () {
             $(this).closest(".progress-bar-wrapper").remove();
         });
         /* Experience & Education events */
-        $("#addExperience").on('click', function (e) {
-            e.preventDefault();
+        $(document).on('click', '#addExperience', function () {
             let currentCase = $(this).closest(".work-education-case");
             let countExperience = currentCase.find("> .box > .item").length;
-
             if (countExperience > 0) {
                 let firstElement = currentCase.find("> .box > .item").first();
                 currentCase.find("> .box").append(firstElement.clone());
             } else {
                 addExperience(currentCase.find("> .box"));
             }
-
             $(".case-item-del").on('click', function (e) {
                 e.preventDefault();
                 $(this).closest(".item").remove();
             });
         });
         // Add education
-        $("#addEducation").on('click', function (e) {
-            e.preventDefault();
+        $(document).on('click', '#addEducation', function () {
             let currentCase = $(this).closest(".work-education-case");
             let countExperience = currentCase.find("> .box > .item").length;
             if (countExperience > 0) {
@@ -154,18 +139,13 @@
             } else {
                 addEducation(currentCase.find("> .box"));
             }
-            $(".case-item-del").on('click', function (e) {
-                e.preventDefault();
-                $(this).closest(".item").remove();
-            });
         });
+
         // delete Ex & education
-        $(".case-item-del").on('click', function (e) {
-            e.preventDefault();
+        $(document).on('click', '.case-item-del', function () {
             $(this).closest(".item").remove();
         });
     });
-
     /* Change name events */
     $(".summary-info > .box > h2").blur(function () {
         let newText = $(this).text();
@@ -175,7 +155,6 @@
         let newText = $(this).text();
         $(".summary-info > .box > h2").text(newText);
     });
-
     /* Portfolio */
     $(".portfolio-projects").css("max-height", 600);
     caculatorPrHeight();
@@ -186,21 +165,15 @@
         }
     });
     // Add project
-    $("#addProject").on('click', function (e) {
-        e.preventDefault();
+    $(document).on('click', '#addProject', function () {
         addProject();
-        $(".del-project").on('click', function (e) {
-            e.preventDefault();
-            dellProject(this);
-        });
     });
     // Dell project
-    $(".del-project").on('click', function (e) {
-        e.preventDefault();
-        dellProject(this);
+    $(document).on('click', '.del-project', function () {
+        ConfirmPrDelete(this);
     });
     // Process postition projects
-    $('.portfolio-projects').masonry({
+    var $grid = $('.portfolio-projects').masonry({
         // options
         itemSelector: '.item',
     });
@@ -208,22 +181,40 @@
     $("#addReferences").on('click', function (e) {
         e.preventDefault();
         addReference();
-        $(".del-reference").on('click', function (e) {
-            e.preventDefault();
-            deleteReference($(this));
-        });
-    });
-    // Reference Change avatar
-    $(".ip-people-img").on('change', function () {
-        readURL(this);
-    });
-    // Reference delete
-    $(".del-reference").on('click', function (e) {
-        e.preventDefault();
-        deleteReference($(this));
     });
 
+    // Reference Change avatar
+    $(document).on('change', '.ip-people-img', function () {
+        readURL(this);
+    });
+    // Reference remove
+    $(document).on('click', '.del-reference', function () {
+        deleteReference($(this));
+    });
+    // Scroll Top
+    $(window).scroll(function() {
+        var height = $(window).scrollTop();
+        if (height > 100) {
+            $('.scroll-top').fadeIn();
+        } else {
+            $('.scroll-top').fadeOut();
+        }
+    });
+    $(document).ready(function() {
+        $(".scroll-top").click(function(event) {
+            event.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            return false;
+        });
+    });
     /* Function */
+    function ConfirmPrDelete(current) {
+        x = confirm("Are you sure want to delete?");
+        if (x) {
+            dellProject(current);
+        }
+    }
+
     function setPosition(width) {
         if ($(window).width() <= 860) {
             let range = (width / 2 - 110);
@@ -236,8 +227,15 @@
     }
 
     function addCircleProgress() {
-        let circleItem = '<div class="progress-circle-wrapper"><div class="progress-circle progress-75"><span contenteditable="true">75</span>' +
-            '</div><div class="progress-circle-name" contenteditable="true">HTML/CSS</div><a href="#" class="progress-circle-del"><i class="far fa-trash-alt"></i></a></div>';
+        let circleItem = `<div class="progress-circle-wrapper">
+                            <div class="progress-circle progress-75">
+                                <span contenteditable="true">75</span>
+                            </div>
+                            <div class="progress-circle-name" contenteditable="true">HTML/CSS</div>
+                                <button class="progress-circle-del" onclick="return ConfirmDelete()">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+                            </div>`;
         $(".skill-progress-circle").prepend(circleItem);
     }
 
@@ -274,8 +272,15 @@
     }
 
     function addProgressBar() {
-        let prbarItem = '<div class="progress-bar-wrapper"><div class="progress-bar-name" contenteditable="true">Team work</div>' +
-            '<div class="progress-bar progress-75"><span contenteditable="true">75</span></div><a href="#" class="progress-circle-del"><i class="far fa-trash-alt"></i></a></div>';
+        let prbarItem = `<div class="progress-bar-wrapper">
+                            <div class="progress-bar-name" contenteditable="true">Team work</div>
+                            <div class="progress-bar progress-75">
+                                <span contenteditable="true">75</span>
+                            </div>
+                            <button class="progress-bar-del" onclick="return ConfirmDelete()">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </div>`;
         $(".skill-progress-bar").prepend(prbarItem);
     }
 
@@ -298,61 +303,107 @@
     }
 
     function addExperience(curerntCase) {
-        let itemHtml = '<div class="item"><div class="title">(2010 - 2019) ABC COMPANY</div><div class="pos">Developer' +
-            '</div><div class="desc text-justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummynibh' +
-            'euismod tincidunt</div></div>';
+        let itemHtml = `<div class="item">
+                            <div class="title">(2010 - 2019) ABC COMPANY</div>
+                            <div class="pos">Developer</div>
+                            <div class="desc text-justify">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummynibh euismod tincidunt
+                            </div>
+                            <button class="case-item-del" onclick="return ConfirmDelete()">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </div>`;
         curerntCase.prepend(itemHtml);
     }
 
     function addEducation(curerntCase) {
-        let itemHtml = '<div class="item"><div class="title">(2010 - 2015) DEF University</div><div class="pos">' +
-            'Student</div><div class="desc text-justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy ' +
-            'nibh euismod tincidunt</div></div>';
+        let itemHtml = `<div class="item">
+                            <div class="title">(2010 - 2015) DEF University</div>
+                            <div class="pos">Student</div>
+                            <div class="desc text-justify">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                            </div>
+                            <button class="case-item-del" onclick="return ConfirmDelete()">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </div>`;
         curerntCase.prepend(itemHtml);
     }
 
     function addProject() {
-        let projectHTML = '<div class="item d-flex justify-content-center align-items-center"><div class="box">' +
-            'Project</div><a href="#" class="del-project"><i class="far fa-trash-alt"></i></a></div>';
-        $(projectHTML).insertBefore(".portfolio-projects-button-add");
-        $(".portfolio-projects > .item").each(function (index) {
-            $(this).removeAttr('style');
-            let item_index = index % 10;
-            if (!$(this).hasClass("portfolio-projects-button-add")) {
-                $(this).addClass("item-style-" + item_index);
-            }
-        });
+        let elems = [getItemElement(), reCreateAddBtn()];
+        let $elems = $(elems);
+        $grid.masonry('remove', $(".portfolio-projects-button-add"));
+        $grid.append($elems).masonry('appended', $elems).masonry();
         caculatorPrHeight();
+    }
 
-        setTimeout(function () {
-            var $container = $('.portfolio-projects');
-            $container.masonry('reloadItems');
-            $container.masonry();
-        }, 0);
+    function getItemElement() {
+        let countProject = ($('.portfolio-projects > .item').length - 1) % 10;
+        let itemElem = document.createElement('div');
+        itemElem.className = 'item d-flex justify-content-center align-items-center item-style-' + countProject;
+        let boxElem = document.createElement('div');
+        boxElem.className = 'box';
+        let textnode = document.createTextNode("Project");
+        boxElem.appendChild(textnode);
+        //action
+        let actionElem = document.createElement('div');
+        actionElem.className = 'project-action d-flex';
+        //icon
+        let viewElem = document.createElement('button');
+        let removeElem = document.createElement('button');
+        removeElem.className = 'del-project';
+        let iView = document.createElement('i');
+        iView.className = 'far fa-eye';
+        viewElem.appendChild(iView);
+        viewElem.setAttribute('data-toggle', "modal");
+        viewElem.setAttribute('data-target', "#exampleModal");
+        let iRemove = document.createElement('i');
+        iRemove.className = 'far fa-trash-alt';
+        removeElem.appendChild(iRemove);
+        // add button
+        actionElem.appendChild(viewElem);
+        actionElem.appendChild(removeElem);
+        boxElem.appendChild(actionElem);
+        itemElem.appendChild(boxElem);
+        return itemElem;
+    }
+
+    function reCreateAddBtn() {
+        let itemElm = document.createElement('div');
+        itemElm.className = 'item portfolio-projects-button-add d-flex justify-content-center align-items-center';
+        let btnElem = document.createElement('button');
+        btnElem.setAttribute("id", "addProject");
+        btnElem.className = 'btn btn-active';
+        let aText = document.createTextNode("Add project");
+        btnElem.appendChild(aText);
+        let iElem = document.createElement('i');
+        iElem.className = 'fas fa-plus';
+        btnElem.appendChild(iElem);
+        itemElm.appendChild(btnElem);
+        return itemElm;
     }
 
     function dellProject(current) {
-
+        let curentIndex = $(current).closest(".item").index() % 10;
         $(".portfolio-projects > .item").each(function (index) {
             let item_index = index % 10;
-            if (!$(this).hasClass("portfolio-projects-button-add")) {
+            if (!$(this).hasClass("portfolio-projects-button-add") && item_index === curentIndex) {
+                $grid.masonry('remove', $(".item-style-" + curentIndex));
+                $(".portfolio-projects > .item-style-" + curentIndex).remove();
+
+            } else if (!$(this).hasClass("portfolio-projects-button-add")) {
                 $(this).removeClass("item-style-" + item_index);
             }
         });
-        $(current).closest(".item").remove();
         $(".portfolio-projects > .item").each(function (index) {
             let item_index = index % 10;
-            $(this).removeAttr('style');
             if (!$(this).hasClass("portfolio-projects-button-add")) {
                 $(this).addClass("item-style-" + item_index);
             }
         });
+        $grid.masonry();
         caculatorPrHeight();
-        setTimeout(function () {
-            var $container = $('.portfolio-projects');
-            $container.masonry('reloadItems');
-            $container.masonry();
-        }, 0);
     }
 
     function caculatorPrHeight() {
@@ -390,21 +441,27 @@
         if (countRef > 1) {
             refIndex = countRef + 1;
         }
-        let refHtml = '<div class="item d-flex align-items-center flex-wrap"><label for="peopleImg' + refIndex + '" class="people-avatar">' +
-            '<img id="peopleImg' + refIndex + '_" src="assets/images/ref-1.png" alt="People avatar"><input type="file" id="peopleImg' + refIndex + '" class="d-none ip-people-img"></label><div class="text text-justify">' +
-            '<span><i class="first">“</i>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh ' +
-            'euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis ' +
-            'nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. ' +
-            'Duis autem vel eum iriure dolor in hendrerit in <i class="last">”</i></span></div><a href="#" class="del-reference">' +
-            '<i class="far fa-trash-alt"></i></a></div>';
+        let refHtml = `<div class="item d-flex align-items-center flex-wrap">
+                            <label for="peopleImg${refIndex}" class="people-avatar">
+                                <img id="peopleImg${refIndex}_" src="assets/images/ref-1.png" alt="People avatar" class="w-100 h-100">
+                                <input type="file" id="peopleImg${refIndex}" class="d-none ip-people-img">
+                            </label>
+                            <div class="text text-justify">
+                                <span><i class="first">“</i>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
+                                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+                                nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in 
+                                <i class="last">”</i>
+                                </span>
+                            </div>
+                            <button class="del-reference" onclick="return ConfirmDelete()">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </div>`;
         $('.references-list').trigger('add.owl.carousel', [$(refHtml), 0]).trigger('refresh.owl.carousel');
-        $(".ip-people-img").on('change', function () {
-            readURL(this);
-        });
     }
 
     function deleteReference(current) {
-        var curPos = $(this).closest(".item").parent().index();
+        var curPos = $(current).closest(".item").parent().index();
         $(".owl-carousel").trigger('remove.owl.carousel', [curPos]).trigger('refresh.owl.carousel');
     }
 })(jQuery);

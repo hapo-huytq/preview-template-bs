@@ -255,7 +255,10 @@ a {
     position: absolute;
     top: 0;
     right: 15px;
-    visibility: hidden; }
+    visibility: hidden;
+    color: #fff;
+    background: transparent;
+    border: none; }
   .progress-circle-wrapper:hover .progress-circle-del {
     visibility: visible; }
 
@@ -287,7 +290,10 @@ a {
     position: absolute;
     top: 0;
     right: 0;
-    visibility: hidden; }
+    visibility: hidden;
+    color: #fff;
+    border: none;
+    background: none; }
   .progress-bar-wrapper:hover .progress-bar-del {
     visibility: visible; }
   .progress-bar-wrapper:last-child {
@@ -370,7 +376,10 @@ a {
     .work-education-case .item .case-item-del {
       position: absolute;
       top: 5px;
-      right: 10px; }
+      right: 10px;
+      background: transparent;
+      color: #fff;
+      border: none; }
   .work-education-case .work-education-button-add {
     text-align: right;
     margin-top: 10px; }
@@ -413,12 +422,14 @@ a {
   overflow: hidden; }
   .portfolio-projects .item {
     width: 25%;
-    height: 200px; }
+    height: 200px;
+    z-index: 2; }
     .portfolio-projects .item.item-style-0, .portfolio-projects .item.item-style-9 {
       background: #FD7038; }
     .portfolio-projects .item.item-style-1 {
       background: #EECD10;
-      height: 400px; }
+      height: 400px;
+      z-index: 3; }
     .portfolio-projects .item.item-style-2 {
       background: #2F2FA1; }
     .portfolio-projects .item.item-style-3, .portfolio-projects .item.item-style-7 {
@@ -427,17 +438,30 @@ a {
       background: #333333; }
     .portfolio-projects .item.item-style-5 {
       height: 400px;
-      background: #EF5B5B; }
+      background: #EF5B5B;
+      z-index: 3; }
     .portfolio-projects .item.item-style-6 {
       background: #F9BC2D; }
-    .portfolio-projects .item .del-project {
+    .portfolio-projects .item .project-action {
       position: absolute;
       top: 10px;
       right: 10px;
-      color: #fff;
-      visibility: hidden; }
-    .portfolio-projects .item:hover .del-project {
+      visibility: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .portfolio-projects .item .project-action button {
+        color: #fff;
+        border: none;
+        background: transparent;
+        padding: 0;
+        margin: 2px 0;
+        display: block; }
+    .portfolio-projects .item:hover .project-action {
       visibility: visible; }
+    .portfolio-projects .item.portfolio-projects-button-add {
+      z-index: 1; }
 
 .portfolio-projects-button-add {
   height: 200px;
@@ -459,7 +483,9 @@ a {
     top: 0;
     right: 5px;
     color: #fff;
-    visibility: hidden; }
+    visibility: hidden;
+    border: none;
+    background: transparent; }
   .references-list .item:hover .del-reference {
     visibility: visible; }
   .references-list .item .people-avatar {
@@ -504,12 +530,37 @@ a {
   line-height: 50px; }
 
 /* ------ */
+/* CV Action */
+.cv-action {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: fixed;
+  right: 0;
+  top: calc(50% - 84px); }
+  .cv-action button {
+    border: none;
+    padding: 0 15px;
+    margin: 3px 0;
+    font-size: 20px;
+    display: block;
+    line-height: 50px;
+    -webkit-box-shadow: 0px 1px 12px -1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 1px 12px -1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 1px 12px -1px rgba(0, 0, 0, 0.5); }
+
+/* ------ */
 /* Copyright */
 .copy-right-wrapper {
   background: #0C0C5E;
   text-align: center;
   height: 50px;
   line-height: 50px; }
+
+/* Project Modal */
+.project-modal {
+  color: #707070; }
 
 /* -- Responsive -- */
 /* Container */

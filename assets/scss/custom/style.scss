@@ -326,6 +326,9 @@ a {
         top: 0;
         right: 15px;
         visibility: hidden;
+        color: #fff;
+        background: transparent;
+        border: none;
     }
     &:hover {
         .progress-circle-del {
@@ -371,6 +374,9 @@ a {
         top: 0;
         right: 0;
         visibility: hidden;
+        color: #fff;
+        border: none;
+        background: none;
     }
     &:hover {
         .progress-bar-del {
@@ -479,6 +485,9 @@ a {
             position: absolute;
             top: 5px;
             right: 10px;
+            background: transparent;
+            color: #fff;
+            border:none;
         }
     }
     .work-education-button-add {
@@ -539,6 +548,7 @@ a {
     .item {
         width: 25%;
         height: 200px;
+        z-index: 2;
         &.item-style-0,
         &.item-style-9 {
             background:#FD7038;
@@ -546,6 +556,7 @@ a {
         &.item-style-1 {
             background:#EECD10;
             height: 400px;
+            z-index: 3;
         }
         &.item-style-2 {
             background:#2F2FA1;
@@ -561,21 +572,33 @@ a {
         &.item-style-5 {
             height: 400px;
             background:#EF5B5B;
+            z-index: 3;
         }
         &.item-style-6 {
             background:#F9BC2D;
         }
-        .del-project {
+        .project-action {
             position: absolute;
             top: 10px;
             right: 10px;
-            color: #fff;
             visibility: hidden;
+            flex-direction: column;
+            button {
+                color: #fff;
+                border: none;
+                background: transparent;
+                padding: 0;
+                margin: 2px 0;
+                display: block;
+            }
         }
         &:hover {
-            .del-project {
+            .project-action {
                 visibility: visible;
             }
+        }
+        &.portfolio-projects-button-add {
+            z-index: 1;
         }
     }
 }
@@ -605,6 +628,8 @@ a {
             right: 5px;
             color: #fff;
             visibility: hidden;
+            border: none;
+            background: transparent;
         }
         &:hover {
             .del-reference {
@@ -663,6 +688,26 @@ a {
 }
 /* ------ */
 
+/* CV Action */
+    .cv-action {
+        flex-direction: column;
+        position: fixed;
+        right: 0;
+        top: calc(50% - 84px);
+        button {
+            border: none;
+            padding: 0 15px;
+            margin: 3px 0;
+            font-size: 20px;
+            display: block;
+            line-height: 50px;
+            -webkit-box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.5);
+            -moz-box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.5);
+            box-shadow: 0px 1px 12px -1px rgba(0,0,0,0.5);
+        }
+    }
+/* ------ */
+
 /* Copyright */
 .copy-right-wrapper {
     background: $color-eighth;
@@ -670,5 +715,8 @@ a {
     height: 50px;
     line-height: 50px;
 }
-
+/* Project Modal */
+.project-modal {
+    color:#707070;
+}
 @import 'responsive';

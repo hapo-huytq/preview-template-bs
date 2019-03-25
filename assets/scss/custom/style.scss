@@ -434,6 +434,12 @@ a {
             top: 0;
             left: -7.5px;
         }
+        &.no-item {
+         border-left: none;
+            &:before {
+                content: none;
+            }
+        }
     }
 
     .item {

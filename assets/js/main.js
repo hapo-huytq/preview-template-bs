@@ -128,6 +128,9 @@
             }
         });
         /* Experience & Education events */
+        //Check item exist in Case
+        countItemCase("experience");
+        countItemCase("education");
         $(document).on('click', '#addExperience', function () {
             let currentCase = $(this).closest(".work-education-case");
             let countExperience = currentCase.find("> .box > .item").length;
@@ -137,7 +140,9 @@
             } else {
                 addExperience(currentCase.find("> .box"));
             }
+            countItemCase("experience");
         });
+
         // Add education
         $(document).on('click', '#addEducation', function () {
             let currentCase = $(this).closest(".work-education-case");
@@ -148,6 +153,7 @@
             } else {
                 addEducation(currentCase.find("> .box"));
             }
+            countItemCase("education");
         });
         // delete Ex & education
         $(document).on('click', '.case-item-del', function () {
@@ -155,6 +161,8 @@
             if (x === true) {
                 $(this).closest(".item").remove();
             }
+            countItemCase("experience");
+            countItemCase("education");
         });
     });
     /* Change name events */
@@ -346,6 +354,15 @@
         currentCase.prepend(itemHtml);
     }
 
+    function countItemCase(cas) {
+        let itemCount = $(".work-education-case > .box." + cas +"> .item").length;
+        if( itemCount < 1 ) {
+            $(".box."+cas).addClass("no-item");
+        } else {
+            $(".box."+cas).removeClass("no-item");
+        }
+    }
+
     function addProject() {
         let elems = [getItemElement(), reCreateAddBtn()];
         let $elems = $(elems);
@@ -498,6 +515,7 @@
                         </div>`;
         $('.references-list').trigger('add.owl.carousel', [$(refHtml), 0]).trigger('refresh.owl.carousel');
     }
+
     function deleteReference(current) {
         let curPos = $(current).closest(".item").parent().index();
         $(".owl-carousel").trigger('remove.owl.carousel', [curPos]).trigger('refresh.owl.carousel');

@@ -166,23 +166,25 @@
     }
     
     /* Portfolio*/
+
     .portfolio-projects {
-        display: none !important;    
-    }
-
-    .portfolio-projects-mb {
-        display: flex !important;    
-    }
-
-    .portfolio-projects-mb {
-        .col-first, 
-        .col-second {
+        overflow: hidden;
+        .item {
             width: 50%;
+            height: 109px;
+            z-index: 2;
+            &.item-style-1 {
+                height: 218px;
+            }
+            &.item-style-5 {
+                height: 218px;
+            }
         }
     }
-
+    
     .portfolio-projects-button-add {
-        min-height: 109px;
+        height: 109px;
+        background: none !important;
     }
 
     .portfolio-wrapper,

@@ -538,7 +538,8 @@ a {
   flex-direction: column;
   position: fixed;
   right: 0;
-  top: calc(50% - 84px); }
+  top: calc(50% - 84px);
+  z-index: 9; }
   .cv-action button {
     border: none;
     padding: 0 15px;
@@ -659,16 +660,18 @@ a {
       z-index: 2; }
   /* Portfolio*/
   .portfolio-projects {
-    display: none !important; }
-  .portfolio-projects-mb {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important; }
-  .portfolio-projects-mb .col-first,
-  .portfolio-projects-mb .col-second {
-    width: 50%; }
+    overflow: hidden; }
+    .portfolio-projects .item {
+      width: 50%;
+      height: 109px;
+      z-index: 2; }
+      .portfolio-projects .item.item-style-1 {
+        height: 218px; }
+      .portfolio-projects .item.item-style-5 {
+        height: 218px; }
   .portfolio-projects-button-add {
-    min-height: 109px; }
+    height: 109px;
+    background: none !important; }
   .portfolio-wrapper .title-top-line:before,
   .references-wrapper .title-top-line:before {
     width: 30px; }

@@ -162,13 +162,13 @@
     });
     /* Portfolio */
     $(".portfolio-projects").css("max-height", 600);
-    caculatorPrHeight();
     $(".portfolio-projects > .item").each(function (index) {
         let item_index = index % 10;
         if (!$(this).hasClass("portfolio-projects-button-add")) {
             $(this).addClass("item-style-" + item_index);
         }
     });
+    caculatorPrHeight();
     // Add project
     $(document).on('click', '#addProject', function () {
         addProject();
@@ -395,12 +395,12 @@
 
     function dellProject(current) {
         let curentIndex = $(current).closest(".item").index() % 10;
+        $(current).closest(".item").addClass("del-item");
         $(".portfolio-projects > .item").each(function (index) {
             let item_index = index % 10;
             if (!$(this).hasClass("portfolio-projects-button-add") && item_index === curentIndex) {
-                $grid.masonry('remove', $(".item-style-" + curentIndex));
-                $(".portfolio-projects > .item-style-" + curentIndex).remove();
-
+                $grid.masonry('remove', $(current).closest(".del-item"));
+                $(".portfolio-projects > .del-item").remove();
             } else if (!$(this).hasClass("portfolio-projects-button-add")) {
                 $(this).removeClass("item-style-" + item_index);
             }
@@ -417,7 +417,7 @@
 
     function caculatorPrHeight() {
         let countImg = $(".portfolio-projects > .item-style-0").length;
-        if (countImg >= 1) {
+        if (countImg >= 1 && $(window).width() > 767) {
             if ($(".portfolio-projects > .item-style-9").length === countImg) {
                 $(".portfolio-projects").css("max-height", 600 * (countImg) + $(".portfolio-projects-button-add").height());
             } else if ($(".portfolio-projects > .item-style-8").length === (countImg) && $(".portfolio-projects > .item-style-9").length < countImg) {
@@ -440,6 +440,30 @@
                 $(".portfolio-projects").css("max-height", 600 * (countImg - 1) + 200);
             } else if ($(".portfolio-projects > .item-style-0").length === (countImg) && $(".portfolio-projects > .item-style-1").length < countImg) {
                 $(".portfolio-projects").css("max-height", 600 * (countImg - 1) + 200);
+            }
+        } else if (countImg >= 1) {
+            if ($(".portfolio-projects > .item-style-9").length === countImg) {
+                $(".portfolio-projects").css("max-height", 654 * (countImg) + $(".portfolio-projects-button-add").height());
+            } else if ($(".portfolio-projects > .item-style-8").length === (countImg) && $(".portfolio-projects > .item-style-9").length < countImg) {
+                $(".portfolio-projects").css("max-height", 654 * (countImg));
+            } else if ($(".portfolio-projects > .item-style-7").length === (countImg) && $(".portfolio-projects > .item-style-8").length < countImg) {
+                $(".portfolio-projects").css("max-height", 654 * (countImg));
+            } else if ($(".portfolio-projects > .item-style-6").length === (countImg) && $(".portfolio-projects > .item-style-7").length < countImg) {
+                $(".portfolio-projects").css("max-height", 654 * (countImg));
+            } else if ($(".portfolio-projects > .item-style-5").length === (countImg) && $(".portfolio-projects > .item-style-6").length < countImg) {
+                $(".portfolio-projects").css("max-height", 654 * (countImg));
+            } else if ($(".portfolio-projects > .item-style-4").length === (countImg) && $(".portfolio-projects > .item-style-5").length < countImg) {
+                $(".portfolio-projects").css("max-height", 654 * (countImg - 1) + 327 + $(".portfolio-projects-button-add").height());
+            } else if ($(".portfolio-projects > .item-style-3").length === (countImg) && $(".portfolio-projects > .item-style-4").length < countImg) {
+                $(".portfolio-projects").css("max-height", 654 * (countImg - 1) + 218 + $(".portfolio-projects-button-add").height());
+            } else if ($(".portfolio-projects > .item-style-2").length === (countImg) && $(".portfolio-projects > .item-style-3").length < countImg) {
+                $(".portfolio-projects").css("max-height", 654 * (countImg - 1) + 218 + $(".portfolio-projects-button-add").height());
+            } else if ($(".portfolio-projects > .item-style-1").length === (countImg) && $(".portfolio-projects > .item-style-2").length < countImg) {
+                $(".portfolio-projects").css("max-height", 654 * (countImg - 1) + 218);
+            } else if ($(".portfolio-projects > .item-style-1").length === (countImg) && $(".portfolio-projects > .item-style-0").length < countImg) {
+                $(".portfolio-projects").css("max-height", 654 * (countImg - 1) + 218);
+            } else if ($(".portfolio-projects > .item-style-0").length === (countImg) && $(".portfolio-projects > .item-style-1").length < countImg) {
+                $(".portfolio-projects").css("max-height", 654 * (countImg - 1) + 109)
             }
         }
     }

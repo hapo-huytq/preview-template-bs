@@ -108,11 +108,17 @@
         });
         // Dell pro skill
         $(document).on('click', '.progress-circle-del', function () {
-            $(this).closest(".progress-circle-wrapper").remove();
+            let x = ConfirmDelete();
+            if (x === true) {
+                $(this).closest(".progress-circle-wrapper").remove();
+            }
         });
         // Del per Skill
         $(document).on('click', '.progress-bar-del', function () {
-            $(this).closest(".progress-bar-wrapper").remove();
+            let x = ConfirmDelete();
+            if (x === true) {
+                $(this).closest(".progress-bar-wrapper").remove();
+            }
         });
         /* Experience & Education events */
         $(document).on('click', '#addExperience', function () {
@@ -124,10 +130,6 @@
             } else {
                 addExperience(currentCase.find("> .box"));
             }
-            $(".case-item-del").on('click', function (e) {
-                e.preventDefault();
-                $(this).closest(".item").remove();
-            });
         });
         // Add education
         $(document).on('click', '#addEducation', function () {
@@ -143,7 +145,10 @@
 
         // delete Ex & education
         $(document).on('click', '.case-item-del', function () {
-            $(this).closest(".item").remove();
+            let x = ConfirmDelete();
+            if (x === true) {
+                $(this).closest(".item").remove();
+            }
         });
     });
     /* Change name events */
@@ -170,7 +175,10 @@
     });
     // Dell project
     $(document).on('click', '.del-project', function () {
-        ConfirmPrDelete(this);
+        let x = ConfirmDelete(this);
+        if (x === true) {
+            dellProject(this);
+        }
     });
     // Process postition projects
     var $grid = $('.portfolio-projects').masonry({
@@ -189,10 +197,13 @@
     });
     // Reference remove
     $(document).on('click', '.del-reference', function () {
-        deleteReference($(this));
+        let x = ConfirmDelete();
+        if (x === true) {
+            deleteReference($(this));
+        }
     });
     // Scroll Top
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         var height = $(window).scrollTop();
         if (height > 100) {
             $('.scroll-top').fadeIn();
@@ -200,19 +211,17 @@
             $('.scroll-top').fadeOut();
         }
     });
-    $(document).ready(function() {
-        $(".scroll-top").click(function(event) {
+    $(document).ready(function () {
+        $(".scroll-top").click(function (event) {
             event.preventDefault();
             $("html, body").animate({ scrollTop: 0 }, "slow");
             return false;
         });
     });
     /* Function */
-    function ConfirmPrDelete(current) {
+    function ConfirmDelete() {
         x = confirm("Are you sure want to delete?");
-        if (x) {
-            dellProject(current);
-        }
+        return x;
     }
 
     function setPosition(width) {
@@ -232,7 +241,7 @@
                                 <span contenteditable="true">75</span>
                             </div>
                             <div class="progress-circle-name" contenteditable="true">HTML/CSS</div>
-                                <button class="progress-circle-del" onclick="return ConfirmDelete()">
+                                <button class="progress-circle-del">
                                     <i class="far fa-trash-alt"></i>
                                 </button>
                             </div>`;
@@ -277,7 +286,7 @@
                             <div class="progress-bar progress-75">
                                 <span contenteditable="true">75</span>
                             </div>
-                            <button class="progress-bar-del" onclick="return ConfirmDelete()">
+                            <button class="progress-bar-del">
                                 <i class="far fa-trash-alt"></i>
                             </button>
                         </div>`;
@@ -309,7 +318,7 @@
                             <div class="desc text-justify">
                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummynibh euismod tincidunt
                             </div>
-                            <button class="case-item-del" onclick="return ConfirmDelete()">
+                            <button class="case-item-del">
                                 <i class="far fa-trash-alt"></i>
                             </button>
                         </div>`;
@@ -323,7 +332,7 @@
                             <div class="desc text-justify">
                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
                             </div>
-                            <button class="case-item-del" onclick="return ConfirmDelete()">
+                            <button class="case-item-del">
                                 <i class="far fa-trash-alt"></i>
                             </button>
                         </div>`;
@@ -453,7 +462,7 @@
                                 <i class="last">”</i>
                                 </span>
                             </div>
-                            <button class="del-reference" onclick="return ConfirmDelete()">
+                            <button class="del-reference">
                                 <i class="far fa-trash-alt"></i>
                             </button>
                         </div>`;

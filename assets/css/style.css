@@ -620,7 +620,8 @@ a {
     position: relative; }
     .info-avatar img {
       width: 100%;
-      margin-top: -45px; }
+      margin-top: -45px;
+      height: auto !important; }
     .info-avatar:after {
       content: "";
       position: absolute;

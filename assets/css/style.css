@@ -679,6 +679,11 @@ a {
   .references-wrapper .title-under-line:after {
     width: 55px; } }
 
+@media (max-width: 480px) {
+  .progress-circle-wrapper
+.progress-circle-del {
+    right: 0; } }
+
 @media (max-width: 400px) {
   h3 {
     font-size: 16px; }

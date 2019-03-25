@@ -13,10 +13,11 @@
             }
         });
         /* Caculating distance of carousel nav button */
-        let carouselWidth = $(".references-carousel").outerWidth();
+        let $carousel = $(".references-carousel");
+        let carouselWidth = $carousel.outerWidth();
         setPosition(carouselWidth);
         $(window).resize(function () {
-            let carouselWidth = $(".references-carousel").outerWidth();
+            carouselWidth = $carousel.outerWidth();
             setPosition(carouselWidth);
         });
         /* Change Image vavatar */
@@ -39,7 +40,9 @@
         });
         /* Skills event */
         // Disable Enter key in contenteditable
-        $(".progress-circle [contenteditable]").keypress(function (e) { return e.which != 13; });
+        $(".progress-circle [contenteditable]").keypress(function (e) {
+            return e.which != 13;
+        });
         // contenteditable Allow only number
         $(".progress-circle > span").on("keypress", function () {
             if (event.keyCode < 48 || event.keyCode > 57) {
@@ -73,7 +76,9 @@
             } else {
                 addCircleProgress();
             }
-            $("[contenteditable]").keypress(function (e) { return e.which != 13; });
+            $("[contenteditable]").keypress(function (e) {
+                return e.which != 13;
+            });
             $(".progress-circle > span").on("keypress", function () {
                 if (event.keyCode < 48 || event.keyCode > 57) {
                     return false;
@@ -95,7 +100,9 @@
             } else {
                 addProgressBar();
             }
-            $("[contenteditable]").keypress(function (e) { return e.which != 13; });
+            $("[contenteditable]").keypress(function (e) {
+                return e.which != 13;
+            });
             $(".progress-bar > span").on("keypress", function () {
                 if (event.keyCode < 48 || event.keyCode > 57) {
                     return false;
@@ -142,7 +149,6 @@
                 addEducation(currentCase.find("> .box"));
             }
         });
-
         // delete Ex & education
         $(document).on('click', '.case-item-del', function () {
             let x = ConfirmDelete();
@@ -181,7 +187,7 @@
         }
     });
     // Process postition projects
-    var $grid = $('.portfolio-projects').masonry({
+    let $grid = $('.portfolio-projects').masonry({
         // options
         itemSelector: '.item',
     });
@@ -204,7 +210,7 @@
     });
     // Scroll Top
     $(window).scroll(function () {
-        var height = $(window).scrollTop();
+        let height = $(window).scrollTop();
         if (height > 100) {
             $('.scroll-top').fadeIn();
         } else {
@@ -214,10 +220,11 @@
     $(document).ready(function () {
         $(".scroll-top").click(function (event) {
             event.preventDefault();
-            $("html, body").animate({ scrollTop: 0 }, "slow");
+            $("html, body").animate({scrollTop: 0}, "slow");
             return false;
         });
     });
+
     /* Function */
     function ConfirmDelete() {
         x = confirm("Are you sure want to delete?");
@@ -294,13 +301,13 @@
     }
 
     function readURL(input) {
-        var fileTypes = ['jpg', 'jpeg', 'png'];
+        let fileTypes = ['jpg', 'jpeg', 'png'];
         if (input.files && input.files[0]) {
-            var extension = input.files[0].name.split('.').pop().toLowerCase(),  //file extension from input file
+            let extension = input.files[0].name.split('.').pop().toLowerCase(),  //file extension from input file
                 isSuccess = fileTypes.indexOf(extension) > -1;  //is extension in acceptable types
             if (isSuccess) {
-                var reader = new FileReader();
-                var imgId = "#" + $(input).attr("id") + "_";
+                let reader = new FileReader();
+                let imgId = "#" + $(input).attr("id") + "_";
                 reader.onload = function (e) {
                     $(imgId).attr('src', e.target.result);
                 };
@@ -311,7 +318,7 @@
         }
     }
 
-    function addExperience(curerntCase) {
+    function addExperience(currentCase) {
         let itemHtml = `<div class="item">
                             <div class="title">(2010 - 2019) ABC COMPANY</div>
                             <div class="pos">Developer</div>
@@ -322,10 +329,10 @@
                                 <i class="far fa-trash-alt"></i>
                             </button>
                         </div>`;
-        curerntCase.prepend(itemHtml);
+        currentCase.prepend(itemHtml);
     }
 
-    function addEducation(curerntCase) {
+    function addEducation(currentCase) {
         let itemHtml = `<div class="item">
                             <div class="title">(2010 - 2015) DEF University</div>
                             <div class="pos">Student</div>
@@ -336,7 +343,7 @@
                                 <i class="far fa-trash-alt"></i>
                             </button>
                         </div>`;
-        curerntCase.prepend(itemHtml);
+        currentCase.prepend(itemHtml);
     }
 
     function addProject() {
@@ -398,11 +405,10 @@
         $(current).closest(".item").addClass("del-item");
         $(".portfolio-projects > .item").each(function (index) {
             let item_index = index % 10;
+            $(this).removeClass("item-style-" + item_index);
             if (!$(this).hasClass("portfolio-projects-button-add") && item_index === curentIndex) {
-                $grid.masonry('remove', $(current).closest(".del-item"));
+                $grid.masonry('remove', $(".del-item"));
                 $(".portfolio-projects > .del-item").remove();
-            } else if (!$(this).hasClass("portfolio-projects-button-add")) {
-                $(this).removeClass("item-style-" + item_index);
             }
         });
         $(".portfolio-projects > .item").each(function (index) {
@@ -492,9 +498,8 @@
                         </div>`;
         $('.references-list').trigger('add.owl.carousel', [$(refHtml), 0]).trigger('refresh.owl.carousel');
     }
-
     function deleteReference(current) {
-        var curPos = $(current).closest(".item").parent().index();
+        let curPos = $(current).closest(".item").parent().index();
         $(".owl-carousel").trigger('remove.owl.carousel', [curPos]).trigger('refresh.owl.carousel');
     }
 })(jQuery);
